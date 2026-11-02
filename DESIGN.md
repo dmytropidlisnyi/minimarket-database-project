@@ -2,81 +2,37 @@
 
 By Dmytro
 
-Video overview: <URL HERE>
-
 ## Scope
-
-In this section you should answer the following questions:
-
-* What is the purpose of your database?
-- Inventory management and segmentation by category. Management of client records and data for those using the services. Creation and tracking of store orders.
-
-* Which people, places, things, etc. are you including in the scope of your database?
-- Managers, database administrator, cashier, inventory specialist.
-
-* Which people, places, things, etc. are *outside* the scope of your database?
-- Customers, suppliers.
+### What is the purpose of your database?
+Inventory management and segmentation by category. Management of client records and data for those using the services. Creation and tracking of store orders.
+### Which people, places, things, etc. are you including in the scope of your database?
+Managers, database administrator, cashier, inventory specialist.
+### Which people, places, things, etc. are *outside* the scope of your database?
+Customers, suppliers.
 
 ## Functional Requirements
-
-In this section you should answer the following questions:
-
-* What should a user be able to do with your database?
-- Database administrators must have direct access to the entire database and be able to modify it as needed. Managers must have read access to the entire database.
-
-
-* What's beyond the scope of what a user should be able to do with your database?
-- Cashiers must be able to enter data into the database and register orders, but they cannot unilaterally delete records or change the format of entries.
+### What should a user be able to do with your database?
+Database administrators must have direct access to the entire database and be able to modify it as needed. Managers must have read access to the entire database.
+### What's beyond the scope of what a user should be able to do with your database?
+Cashiers must be able to enter data into the database and register orders, but they cannot unilaterally delete records or change the format of entries.
 Clients can view their bonus balance in their personal account, but they cannot alter the format or the entries themselves.
 
 ## Representation
-
 ### Entities
+### Which entities will you choose to represent in your database?
+- `Categories`
+- `Products`
+- `Order_items`
+- `Orders`
+- `Customers`
 
-In this section you should answer the following questions:
+### What attributes will those entities have?
+- **Categories** (`id`, `name`, `description`);
+- **Products** (`id`, `barcode`, `name`, `category_id`, `price`, `stock_quantity`);
+- **Customers** (`id`, `full_name`, `phone`, `bonus_points`, `created_at`);
+- **Orders** (`id`, `customer_id`, `order_date`, `total_amount`, `status`);
+- **Order_items** (`id`, `order_id`, `product_id`, `quantity`, `unit_price`);
 
-* Which entities will you choose to represent in your database?
-- Categories
-- Products
-- Order_items
-- Orders
-- Customers
-
-* What attributes will those entities have?
-- Categories (
-    id(PK),
-    name(TEXT UNIQUE NOT NULL),
-    description(TEXT NOT NULL)
-).
-- Products (
-    id(PK),
-    barcode(TEXT UNIQUE NOT NULL),
-    name,
-    category_id(FK - categories(id)),
-    price,
-    stock_quantity
-).
-- Customers (
-    id(PK),
-    full_name,
-    phone,
-    bonus_points,
-    created_at
-).
-- Orders (
-    id(PK),
-    customer_id (FK - customers(id)),
-    order_date,
-    total_amount,
-    status
-).
-- Order_items (
-    id(PK),
-    order_id (FK - orders(id)),
-    product_id (FK - products(id)),
-    quantity,
-    unit_price
-).
 
 * Why did you choose the types you did?
 - INTEGER, TEXT, and NUMERIC were used as the primary data types in SQLite. INTEGER was used for primary keys, and NUMERIC for monetary values. TEXT was used for other types.
