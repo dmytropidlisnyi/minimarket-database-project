@@ -1,4 +1,5 @@
 # 🛒 Mini-Market Relational Database
+[Читати українською](README.uk.md)
 
 Relational database designed for a retail mini-market, featuring automated transaction calculations and strict data integrity constraints. Built as the final project for **CS50 SQL**.
 
